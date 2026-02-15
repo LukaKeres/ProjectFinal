@@ -21,12 +21,10 @@ public class DriverFactory {
     public static void initDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--enable-features=AdBlocker");
-        options.addArguments("--disable-popup-blocking");
+        options.addArguments("--enable-popup-blocking");
         Map<String, Object> prefs = new HashMap<>();
         prefs.put("profile.default_content_setting_values.notifications", 2);
         prefs.put("profile.default_content_setting_values.popups", 2);
-        //prefs.put("profile.managed_default_content_settings.images", 2);
-        
         options.setExperimentalOption("prefs", prefs);
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
